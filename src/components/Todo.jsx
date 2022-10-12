@@ -8,29 +8,27 @@ import { completeThis } from "../redux/modules/todo";
 
 const Todo = ({data}) => {
 
-    const deletepatch = useDispatch();
-    const completepatch = useDispatch();
-    const viewpatch = useDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const onDeleteHandler = () => {
-        deletepatch(deleteThis(data.id))
+        dispatch(deleteThis(data.id))
     }
     
     const onCompleteHandler = () => {
-        completepatch(completeThis(data.id))
+        dispatch(completeThis(data.id))
     }
     
     const onViewHandeler = () => {
-        viewpatch(viewThis(data.id))
+        dispatch(viewThis(data.id))
         navigate(`/page/${data.id}`)
     }
 
     return (
         <TodoBox>
             <View onClick={onViewHandeler}><b>상세보기</b></View>
-            <div><h2> {data.title} </h2></div>
-            <div><p> {data.body} </p></div>
+            <div><h2> {data.title} </h2>
+            <p> {data.body} </p></div>
             <Btns>
             <Delete onClick={onDeleteHandler}>삭제하기</Delete>
             <Done onClick={onCompleteHandler}> {!data.isDone ? "완료하기" : "취소하기"} </Done>
