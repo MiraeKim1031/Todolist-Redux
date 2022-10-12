@@ -52,6 +52,7 @@ const initialState = {
             isDone: true
         },
     ],
+    selectedTodo: {}
 };
 
 const todoSetter = (state = initialState, action) => {
@@ -59,23 +60,26 @@ const todoSetter = (state = initialState, action) => {
         case SUBMIT:
             const id = Date.now()
             return {
+                ...state,
                 todos: [...state.todos, {title: action.payload[0], body: action.payload[1], isDone:false, id}]
             };
         case DELETE:
             const afterDel = state.todos.filter((todo) => todo.id !== action.payload)
             return {
+                ...state,
                 todos: afterDel,
             };
         case COMPLETE:
             const afterCompl = state.todos.map((todo)=> todo.id === action.payload ? {...todo, isDone: !todo.isDone} : todo);
             return {
+                ...state,
                 todos: afterCompl,
             };
         case VIEW:
             const afterView = state.todos.filter((todo) => todo.id === action.payload)
             return {
-                selectedTodo: afterView[0],
-                ...state
+                ...state,
+                selectedTodo: afterView[0]
             }
         default:
             return state;
