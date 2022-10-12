@@ -51,7 +51,7 @@ const initialState = {
             body: "Redux로 투두리스트 구현해서 배포하기",
             isDone: true
         },
-    ]
+    ],
 };
 
 const todoSetter = (state = initialState, action) => {
@@ -74,7 +74,7 @@ const todoSetter = (state = initialState, action) => {
         case VIEW:
             const afterView = state.todos.filter((todo) => todo.id === action.payload)
             return {
-                selectedTodo: afterView,
+                selectedTodo: afterView[0],
                 ...state
             }
         default:

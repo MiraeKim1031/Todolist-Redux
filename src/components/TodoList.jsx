@@ -6,7 +6,6 @@ import Todo from "./Todo";
 const TodoList = () => {
 
     const todoList = useSelector((state) => state.todoSetter.todos);
-    console.log(todoList)
 
     return (
         <Lists>

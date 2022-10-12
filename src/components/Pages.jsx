@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 
 const Pages = () => {
-  const selectedTodo = useSelector((state) => state.todoSetter.selectedTodo[0]);
+  const selectedTodo = useSelector((state) => state.todoSetter.selectedTodo);
   const navigate = useNavigate();
+  console.log(selectedTodo);
 
   return (
     <Wrap>
